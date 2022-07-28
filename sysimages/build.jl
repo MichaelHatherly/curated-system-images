@@ -27,9 +27,9 @@ PackageCompiler.create_sysimage(;
 
 if haskey(ENV, "CI")
     @info "clearing the depot of unrequired data."
+    folders = ("artifacts", "scratchspaces")
     for each in readdir(first(Base.DEPOT_PATH); join=true)
-        basename(each) in ("artifacts", "compiled", "scratchspaces", "packages") ||
-            rm(each; recursive=true)
+        basename(each) in folders || rm(each; recursive=true)
     end
 end
 
