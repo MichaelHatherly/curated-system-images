@@ -18,6 +18,7 @@ sysimage_path = joinpath(project, "$image.$ext")
 @info "building a system image for '$image'."
 
 PackageCompiler.create_sysimage(;
+    cpu_target="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)",
     include_transitive_dependencies=false,
     incremental=true,
     precompile_execution_file,
