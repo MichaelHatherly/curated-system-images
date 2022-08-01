@@ -26,6 +26,7 @@ jobs:
           - macOS-latest
         image:
           - CairoMakie
+          - DataFrames
         arch:
           - x64
     steps:
