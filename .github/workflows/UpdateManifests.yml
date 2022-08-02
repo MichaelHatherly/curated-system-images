@@ -45,4 +45,4 @@ jobs:
             This pull request updates the `Manifest.toml` to the latest versions.
           branch: bot/update/${{ matrix.image }}/${{ github.ref }}
           delete-branch: true
-          add-paths: ${{ matrix.image }}/Manifest.toml"
+          add-paths: ${{ matrix.image }}/Manifest.toml
