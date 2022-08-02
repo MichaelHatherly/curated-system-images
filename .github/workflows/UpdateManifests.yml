@@ -1,0 +1,48 @@
+name: Update Manifests
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image:
+          - sysimages
+          - sysimages/CairoMakie
+          - sysimages/DataFrames
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.7'
+          arch: x64
+
+      - name: Update the manifest
+        run: julia --project=${{ matrix.image }} -e 'import Pkg; Pkg.update()'
+        env:
+          JULIA_PKG_PRECOMPILE_AUTO: "0"
+
+      - name: Create pull request
+        id: create_pr
+        uses: peter-evans/create-pull-request@923ad837f191474af6b1721408744feb989a4c27 # v4.0.4
+        with:
+          token: ${{  secrets.GITHUB_TOKEN }}
+          commit-message: '🤖 Automatic update of `${{ matrix.image }}/Manifest.toml`.'
+          title: '🤖 Automatic update of `${{ matrix.image }}/Manifest.toml`.'
+          body: |-
+            This pull request updates the `Manifest.toml` to the latest versions.
+          branch: bot/update/${{ matrix.image }}/${{ github.ref }}
+          delete-branch: true
+          add-paths: ${{ matrix.image }}/Manifest.toml"
