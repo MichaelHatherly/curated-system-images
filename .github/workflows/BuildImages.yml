@@ -27,6 +27,7 @@ jobs:
         image:
           - CairoMakie
           - DataFrames
+          - JuliaSyntax
         arch:
           - x64
     steps:
