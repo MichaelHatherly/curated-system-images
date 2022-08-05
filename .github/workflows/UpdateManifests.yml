@@ -18,6 +18,7 @@ jobs:
           - sysimages
           - sysimages/CairoMakie
           - sysimages/DataFrames
+          - sysimages/JuliaSyntax
     steps:
       - uses: actions/checkout@v3
         with:
