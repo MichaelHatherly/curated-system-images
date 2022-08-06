@@ -43,5 +43,5 @@ cp(sysimage_path, dst)
 @info "copying system image project and manifest to named environment in depot."
 
 dst = joinpath(first(Base.DEPOT_PATH), "environments", image)
-mkpath(dst)
+mkpath(dirname(dst))
 cp(project, dst)
