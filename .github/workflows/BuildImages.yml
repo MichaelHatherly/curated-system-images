@@ -19,15 +19,15 @@ jobs:
     strategy:
       matrix:
         version:
-          - '1.7'
+          - '1.8.0-rc3'
         os:
           - ubuntu-latest
           - windows-latest
           - macOS-latest
         image:
-          - CairoMakie
+          # - CairoMakie
           - DataFrames
-          - JuliaSyntax
+          # - JuliaSyntax
         arch:
           - x64
     steps:
