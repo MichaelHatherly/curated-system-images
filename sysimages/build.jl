@@ -28,7 +28,7 @@ PackageCompiler.create_sysimage(;
 
 if haskey(ENV, "CI")
     @info "clearing the depot of unrequired data."
-    folders = ("artifacts", "scratchspaces")
+    folders = ("artifacts", "packages", "scratchspaces")
     for each in readdir(first(Base.DEPOT_PATH); join=true)
         basename(each) in folders || rm(each; recursive=true)
     end
@@ -39,3 +39,9 @@ end
 dst = joinpath(first(Base.DEPOT_PATH), "system-images", basename(sysimage_path))
 mkpath(dirname(dst))
 cp(sysimage_path, dst)
+
+@info "copying system image project and manifest to named environment in depot."
+
+dst = joinpath(first(Base.DEPOT_PATH), "environments", image)
+mkpath(dst)
+cp(project, dst)
