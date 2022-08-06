@@ -34,12 +34,6 @@ if haskey(ENV, "CI")
     end
 end
 
-@info "copying system image to depot directory for bundling."
-
-dst = joinpath(first(Base.DEPOT_PATH), "system-images", basename(sysimage_path))
-mkpath(dirname(dst))
-cp(sysimage_path, dst)
-
 @info "copying system image project and manifest to named environment in depot."
 
 dst = joinpath(first(Base.DEPOT_PATH), "environments", image)
