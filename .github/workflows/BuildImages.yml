@@ -68,6 +68,7 @@ jobs:
     name: Release ${{ matrix.image }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ matrix.version }}
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
         version:
           - '1.7'
