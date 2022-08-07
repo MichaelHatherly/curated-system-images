@@ -25,7 +25,7 @@ jobs:
           - windows-latest
           - macOS-latest
         image:
-          - CairoMakie
+          - AlgebraOfGraphics
           - DataFrames
           - JuliaSyntax
         arch:
@@ -77,7 +77,7 @@ jobs:
           - windows-latest
           - macOS-latest
         image:
-          - CairoMakie
+          - AlgebraOfGraphics
           - DataFrames
           - JuliaSyntax
         arch:
