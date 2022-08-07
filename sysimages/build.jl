@@ -27,6 +27,10 @@ PackageCompiler.create_sysimage(;
 )
 
 if haskey(ENV, "CI")
+    @info "removing `PackageCompiler` from the depot after use."
+    Pkg.rm("PackageCompiler")
+    Pkg.gc(; collect_delay=Dates.Day(0))
+
     @info "clearing the depot of unrequired data."
     folders = ("artifacts", "packages", "scratchspaces")
     for each in readdir(first(Base.DEPOT_PATH); join=true)
