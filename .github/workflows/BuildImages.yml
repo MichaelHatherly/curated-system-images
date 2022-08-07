@@ -96,9 +96,9 @@ jobs:
 
       - run: ls depot
 
-      - name: Change ownership of the system image
+      - name: Change ownership of any Windows executables or DLLs.
         run: |
-          chmod a+rx depot/environments/${{ matrix.image }}/${{ matrix.image }}.*
+          find depot -type f -iname "*.{dll,exe}" -exec chmod a+rx {} \;
 
       - name: Repack tarballs
         run: |
