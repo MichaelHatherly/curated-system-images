@@ -13,8 +13,8 @@ env:
   JULIA_DEPOT_PATH: ${{ github.workspace }}/.julia
 
 jobs:
-  test:
-    name: ${{ matrix.image }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ matrix.version }}
+  build:
+    name: Build ${{ matrix.image }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ matrix.version }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -54,14 +54,65 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         run: |
           julia --project=sysimages sysimages/build.jl ${{ matrix.image }}
-          mkdir -p tarballs
-          tar -czvf tarballs/${{ matrix.image }}-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.version }}.tar.gz -C ${{ env.JULIA_DEPOT_PATH }} .
+          tar -czvf depot.tar.gz -C ${{ env.JULIA_DEPOT_PATH }} .
+
+      - uses: actions/upload-artifact@v3
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: ${{ matrix.image }}-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.version }}
+          path: depot.tar.gz
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [build]
+    name: Release ${{ matrix.image }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ matrix.version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version:
+          - '1.7'
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
+        image:
+          - CairoMakie
+          - DataFrames
+          - JuliaSyntax
+        arch:
+          - x64
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ matrix.image }}-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.version }}
+          path: artifacts
+
+      - name: Unpack tarball
+        run: |
+          mkdir depot
+          tar -xvf artifacts/depot.tar.gz -C depot
+
+      - run: ls depot
+
+      - name: Change ownership of the system image
+        run: |
+          chmod a+rx depot/environments/${{ matrix.image }}/${{ matrix.image }}.*
+
+      - name: Repack tarballs
+        run: |
+          mkdir -p release
+          tar -czvf release/${{ matrix.image }}-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.version }}.tar.gz -C depot .
 
       - name: Release
         uses: ncipollo/release-action@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          artifacts: "tarballs/*.tar.gz"
+          artifacts: "release/*.tar.gz"
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
           prerelease: true
+
+      - uses: geekyeggo/delete-artifact@v1
+        with:
+          name: ${{ matrix.image }}-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.version }}
