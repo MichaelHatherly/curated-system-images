@@ -98,7 +98,8 @@ jobs:
 
       - name: Change ownership of any Windows executables or DLLs.
         run: |
-          find depot -type f -iname "*.{dll,exe}" -exec chmod a+rx {} \;
+          find depot -type f -iname "*.dll" -exec chmod a+rx {} \;
+          find depot -type f -iname "*.exe" -exec chmod a+rx {} \;
 
       - name: Repack tarballs
         run: |
