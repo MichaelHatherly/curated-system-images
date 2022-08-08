@@ -31,7 +31,7 @@ jobs:
           arch: x64
 
       - name: Update the manifest
-        run: julia --project=${{ matrix.image }} -e 'import Pkg; Pkg.update()'
+        run: julia --project=${{ matrix.image }} -e 'import Pkg; try; Pkg.update(); catch err; @error("failed to update", err); end'
         env:
           JULIA_PKG_PRECOMPILE_AUTO: "0"
 
