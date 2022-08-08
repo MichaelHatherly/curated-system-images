@@ -16,7 +16,7 @@ jobs:
       matrix:
         image:
           - sysimages
-          - sysimages/CairoMakie
+          - sysimages/AlgebraOfGraphics
           - sysimages/DataFrames
           - sysimages/JuliaSyntax
     steps:
