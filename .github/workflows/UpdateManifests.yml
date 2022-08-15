@@ -43,6 +43,7 @@ jobs:
           token: ${{  secrets.GITHUB_TOKEN }}
           commit-message: '🤖 Automatic update of `${{ matrix.image }}/Manifest.toml`.'
           title: '🤖 Automatic update of `${{ matrix.image }}/Manifest.toml`.'
+          labels: automerge
           body: |-
             This pull request updates the `Manifest.toml` to the latest versions.
           branch: bot/update/${{ matrix.image }}/${{ github.ref }}
