@@ -18,6 +18,7 @@ jobs:
           - sysimages
           - sysimages/AlgebraOfGraphics
           - sysimages/DataFrames
+          - sysimages/JuliaFormatter
           - sysimages/JuliaSyntax
     steps:
       - uses: actions/checkout@v3

@@ -27,6 +27,7 @@ jobs:
         image:
           - AlgebraOfGraphics
           - DataFrames
+          - JuliaFormatter
           - JuliaSyntax
         arch:
           - x64
@@ -79,6 +80,7 @@ jobs:
         image:
           - AlgebraOfGraphics
           - DataFrames
+          - JuliaFormatter
           - JuliaSyntax
         arch:
           - x64
