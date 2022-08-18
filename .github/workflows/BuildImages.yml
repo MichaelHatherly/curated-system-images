@@ -72,7 +72,7 @@ jobs:
       max-parallel: 1
       matrix:
         version:
-          - '1.7'
+          - '1.8'
         os:
           - ubuntu-latest
           - windows-latest
