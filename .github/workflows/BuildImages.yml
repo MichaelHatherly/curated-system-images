@@ -27,6 +27,7 @@ jobs:
         image:
           - AlgebraOfGraphics
           - DataFrames
+          - DifferentialEquations
           - JuliaFormatter
           - JuliaSyntax
         arch:
@@ -80,6 +81,7 @@ jobs:
         image:
           - AlgebraOfGraphics
           - DataFrames
+          - DifferentialEquations
           - JuliaFormatter
           - JuliaSyntax
         arch:
