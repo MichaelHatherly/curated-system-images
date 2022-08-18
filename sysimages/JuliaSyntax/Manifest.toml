@@ -1,23 +1,19 @@
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.7.3"
+julia_version = "1.8.0"
 manifest_format = "2.0"
+project_hash = "18c1d4fc651b6386a05f02388bde98e99764c57f"
 
 [[deps.JuliaSyntax]]
 deps = ["Mmap"]
-git-tree-sha1 = "44cfaf2d61bc7a9f2ae2cd6326e3e500d64bb07c"
-repo-rev = "main"
-repo-url = "https://github.com/JuliaLang/JuliaSyntax.jl"
+git-tree-sha1 = "bf799a0c18ff9126866761da7ffce2bbc1d59995"
 uuid = "70703baa-626e-46a2-a12c-08ffd08c73b4"
 version = "0.1.0"
 
 [[deps.JuliaSyntaxCore]]
 deps = ["JuliaSyntax"]
-git-tree-sha1 = "d4a9cf1e3f2220deb3bffdc7e7ef98fc4bf31702"
-repo-rev = "main"
-repo-subdir = "sysimage/JuliaSyntaxCore"
-repo-url = "https://github.com/JuliaLang/JuliaSyntax.jl"
-uuid = "05e5f68f-ccd0-4d84-a81a-f557a333a331"
+path = "JuliaSyntaxCore"
+uuid = "fcbcd6f9-6e0c-440f-a208-7b935ba62d67"
 version = "0.1.0"
 
 [[deps.Mmap]]

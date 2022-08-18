@@ -1,4 +1,5 @@
 /Manifest.toml
+/sysimages/JuliaSyntax/JuliaSyntaxCore/Manifest.toml
 *.dll
 *.dylib
 *.so
