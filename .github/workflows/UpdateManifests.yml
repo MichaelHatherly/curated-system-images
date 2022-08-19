@@ -10,16 +10,30 @@ permissions:
   pull-requests: write
 
 jobs:
+  manifests:
+    name: Manifests
+    runs-on: ubuntu-latest
+    outputs:
+      manifests: ${{ steps.set-manifests.outputs.manifests }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.8'
+          arch: x64
+
+      - id: set-manifests
+        run: |
+          julia --project=.ci -e 'import Pkg; Pkg.instantiate()'
+          julia --project=.ci .ci/manifests.jl
+
   update:
+    needs: [manifests]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        image:
-          - sysimages
-          - sysimages/AlgebraOfGraphics
-          - sysimages/DataFrames
-          - sysimages/JuliaFormatter
-          - sysimages/JuliaSyntax
+        image: ${{ fromJSON(needs.manifests.outputs.manifests) }}
     steps:
       - uses: actions/checkout@v3
         with:
