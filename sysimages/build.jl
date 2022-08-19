@@ -28,6 +28,11 @@ PackageCompiler.create_sysimage(;
     sysimage_path
 )
 
+if !isfile(sysimage_path)
+    @error "failed to generate system image file: $(sysimage_path)"
+    exit(1)
+end
+
 if haskey(ENV, "CI")
     @info "removing `PackageCompiler` from the depot after use."
     Pkg.rm("PackageCompiler")
