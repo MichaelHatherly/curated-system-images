@@ -9,6 +9,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.ref != 'refs/heads/main' || github.run_number }}
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+
 env:
   JULIA_DEPOT_PATH: ${{ github.workspace }}/.julia
 

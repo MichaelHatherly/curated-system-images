@@ -5,6 +5,10 @@ on:
     - cron: '0 0 * * 1'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.ref != 'refs/heads/main' || github.run_number }}
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+
 permissions:
   contents: write
   pull-requests: write
@@ -60,6 +64,6 @@ jobs:
           labels: automerge
           body: |-
             This pull request updates the `Manifest.toml` to the latest versions.
-          branch: bot/update/${{ matrix.image }}/${{ github.ref }}
+          branch-suffix: random
           delete-branch: true
           add-paths: ${{ matrix.image }}/Manifest.toml
