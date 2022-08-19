@@ -28,7 +28,9 @@ PackageCompiler.create_sysimage(;
     sysimage_path
 )
 
-if !isfile(sysimage_path)
+if isfile(sysimage_path)
+    @info "successfully created system image."
+else
     @error "failed to generate system image file: $(sysimage_path)"
     exit(1)
 end

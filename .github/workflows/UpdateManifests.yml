@@ -18,7 +18,6 @@ jobs:
           - sysimages
           - sysimages/AlgebraOfGraphics
           - sysimages/DataFrames
-          - sysimages/DifferentialEquations
           - sysimages/JuliaFormatter
           - sysimages/JuliaSyntax
     steps:
