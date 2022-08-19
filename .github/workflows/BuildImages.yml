@@ -13,7 +13,26 @@ env:
   JULIA_DEPOT_PATH: ${{ github.workspace }}/.julia
 
 jobs:
+  images:
+    name: Image Names
+    runs-on: ubuntu-latest
+    outputs:
+      images: ${{ steps.set-images.outputs.images }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.8'
+          arch: x64
+
+      - id: set-images
+        run: |
+          julia --project=.ci -e 'import Pkg; Pkg.instantiate()'
+          julia --project=.ci .ci/images.jl
+
   build:
+    needs: [images]
     name: Build ${{ matrix.image }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ matrix.version }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -24,11 +43,7 @@ jobs:
           - ubuntu-latest
           - windows-latest
           - macOS-latest
-        image:
-          - AlgebraOfGraphics
-          - DataFrames
-          - JuliaFormatter
-          - JuliaSyntax
+        image: ${{ fromJSON(needs.images.outputs.images) }}
         arch:
           - x64
     steps:
@@ -63,9 +78,17 @@ jobs:
           name: ${{ matrix.image }}-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.version }}
           path: depot.tar.gz
 
+  success:
+    needs: [build]
+    name: Successful Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Success
+        run: echo "Success"
+
   release:
     if: startsWith(github.ref, 'refs/tags/')
-    needs: [build]
+    needs: [images, success]
     name: Release ${{ matrix.image }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ matrix.version }}
     runs-on: ubuntu-latest
     strategy:
@@ -77,11 +100,7 @@ jobs:
           - ubuntu-latest
           - windows-latest
           - macOS-latest
-        image:
-          - AlgebraOfGraphics
-          - DataFrames
-          - JuliaFormatter
-          - JuliaSyntax
+        image: ${{ fromJSON(needs.images.outputs.images) }}
         arch:
           - x64
     steps:
