@@ -52,13 +52,24 @@ jobs:
           - x64
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            folder:
+              - 'sysimages/${{ matrix.image }}/**'
 
       - uses: julia-actions/setup-julia@v1
+        if: startsWith(github.ref, 'refs/tags/') || steps.changes.outputs.folder == 'true'
         with:
           version: ${{ matrix.version }}
           arch: ${{ matrix.arch }}
 
       - name: Instantiate Environments
+        if: startsWith(github.ref, 'refs/tags/') || steps.changes.outputs.folder == 'true'
         run: |
           julia --project=sysimages -e 'import Pkg; Pkg.instantiate()'
           julia --project=sysimages/${{ matrix.image }} -e 'import Pkg; Pkg.instantiate()'
@@ -66,7 +77,7 @@ jobs:
           JULIA_PKG_PRECOMPILE_AUTO: "0"
 
       - name: Run Precompile Script
-        if: startsWith(github.ref, 'refs/tags/') == false
+        if: startsWith(github.ref, 'refs/tags/') == false && steps.changes.outputs.folder == 'true'
         run: |
           julia --project=sysimages/${{ matrix.image }} sysimages/${{ matrix.image }}/precompile.jl
 
