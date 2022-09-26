@@ -5,16 +5,12 @@ manifest_format = "2.0"
 project_hash = "18c1d4fc651b6386a05f02388bde98e99764c57f"
 
 [[deps.JuliaSyntax]]
-deps = ["Mmap"]
-git-tree-sha1 = "bf799a0c18ff9126866761da7ffce2bbc1d59995"
+git-tree-sha1 = "76bdb1499d6a92691f5343e5b08afa064a8ce85b"
 uuid = "70703baa-626e-46a2-a12c-08ffd08c73b4"
-version = "0.1.0"
+version = "0.2.0"
 
 [[deps.JuliaSyntaxCore]]
 deps = ["JuliaSyntax"]
 path = "JuliaSyntaxCore"
 uuid = "fcbcd6f9-6e0c-440f-a208-7b935ba62d67"
 version = "0.1.0"
-
-[[deps.Mmap]]
-uuid = "a63ad114-7e13-5084-954f-fe012c677804"
