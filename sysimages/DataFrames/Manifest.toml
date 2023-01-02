@@ -1,6 +1,6 @@
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.3"
+julia_version = "1.8.4"
 manifest_format = "2.0"
 project_hash = "6a6543a08b2f5435449632f4d0c1b59504ebfc3e"
 
@@ -24,7 +24,7 @@ version = "4.5.0"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
-version = "0.5.2+0"
+version = "1.0.1+0"
 
 [[deps.Crayons]]
 git-tree-sha1 = "249fe38abf76d48563e2f4556bebd215aa317e15"
@@ -114,9 +114,9 @@ uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
 
 [[deps.Missings]]
 deps = ["DataAPI"]
-git-tree-sha1 = "bf210ce90b6c9eed32d25dbcae1ebc565df2687f"
+git-tree-sha1 = "f66bdc5de519e8f8ae43bdc598782d35a25b1272"
 uuid = "e1d29d7a-bbdc-5cf2-9ac0-f12de2c33e28"
-version = "1.0.2"
+version = "1.1.0"
 
 [[deps.OpenBLAS_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
