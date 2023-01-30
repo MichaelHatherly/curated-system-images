@@ -76,10 +76,10 @@ uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 version = "0.21.3"
 
 [[deps.JuliaFormatter]]
-deps = ["CSTParser", "CommonMark", "DataStructures", "Glob", "Pkg", "Tokenize"]
-git-tree-sha1 = "2badee519ffd45303ea4b8e556e9a8ea09484418"
+deps = ["CSTParser", "CommonMark", "DataStructures", "Glob", "Pkg", "SnoopPrecompile", "Tokenize"]
+git-tree-sha1 = "94ce68aee6dbc066e39d5d2ca0b6b1ccd38d7e04"
 uuid = "98e50ef6-434e-11e9-1051-2b60c6c9e899"
-version = "1.0.19"
+version = "1.0.20"
 
 [[deps.LibCURL]]
 deps = ["LibCURL_jll", "MozillaCACerts_jll"]
