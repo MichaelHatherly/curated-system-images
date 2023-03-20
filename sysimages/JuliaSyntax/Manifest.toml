@@ -5,9 +5,9 @@ manifest_format = "2.0"
 project_hash = "18c1d4fc651b6386a05f02388bde98e99764c57f"
 
 [[deps.JuliaSyntax]]
-git-tree-sha1 = "db2bdeda30e452485863799be4515f6305431a46"
+git-tree-sha1 = "5f0b864db9e8d7c109eba0fe7d306a108fda5056"
 uuid = "70703baa-626e-46a2-a12c-08ffd08c73b4"
-version = "0.3.2"
+version = "0.3.3"
 
 [[deps.JuliaSyntaxCore]]
 deps = ["JuliaSyntax"]
