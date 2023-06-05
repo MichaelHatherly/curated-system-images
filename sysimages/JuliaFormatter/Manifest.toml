@@ -77,9 +77,9 @@ version = "0.21.4"
 
 [[deps.JuliaFormatter]]
 deps = ["CSTParser", "CommonMark", "DataStructures", "Glob", "Pkg", "PrecompileTools", "Tokenize"]
-git-tree-sha1 = "832629821a3c64bbabb8ad7f31fd62a37aad27be"
+git-tree-sha1 = "c7a9587f2fbac4983c9b37a3a716dceaa08fdb06"
 uuid = "98e50ef6-434e-11e9-1051-2b60c6c9e899"
-version = "1.0.31"
+version = "1.0.33"
 
 [[deps.LibCURL]]
 deps = ["LibCURL_jll", "MozillaCACerts_jll"]
@@ -153,9 +153,9 @@ version = "1.8.0"
 
 [[deps.PrecompileTools]]
 deps = ["Preferences"]
-git-tree-sha1 = "259e206946c293698122f63e2b513a7c99a244e8"
+git-tree-sha1 = "9673d39decc5feece56ef3940e5dafba15ba0f81"
 uuid = "aea7be01-6a6a-4083-8856-8a6e6704d82a"
-version = "1.1.1"
+version = "1.1.2"
 
 [[deps.Preferences]]
 deps = ["TOML"]
