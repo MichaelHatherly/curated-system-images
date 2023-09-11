@@ -20,7 +20,7 @@ jobs:
     outputs:
       manifests: ${{ steps.set-manifests.outputs.manifests }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: julia-actions/setup-julia@v1
         with:
@@ -39,7 +39,7 @@ jobs:
       matrix:
         image: ${{ fromJSON(needs.manifests.outputs.manifests) }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           persist-credentials: false
           fetch-depth: 0
