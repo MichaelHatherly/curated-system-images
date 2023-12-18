@@ -87,7 +87,7 @@ jobs:
           julia --project=sysimages sysimages/build.jl ${{ matrix.image }}
           tar -czvf depot.tar.gz -C ${{ env.JULIA_DEPOT_PATH }} .
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: startsWith(github.ref, 'refs/tags/')
         with:
           name: ${{ matrix.image }}-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.version }}
