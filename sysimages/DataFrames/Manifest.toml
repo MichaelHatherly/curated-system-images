@@ -50,9 +50,9 @@ version = "1.6.1"
 
 [[deps.DataFramesMeta]]
 deps = ["Chain", "DataFrames", "MacroTools", "OrderedCollections", "Reexport", "TableMetadataTools"]
-git-tree-sha1 = "e3932524132a3fb215385f5bd7d7e8b2c7ead737"
+git-tree-sha1 = "45da647495a607429ca6cbdc591e98737a928b42"
 uuid = "1313f7d8-7da2-5740-9ea0-a2ca25f37964"
-version = "0.15.0"
+version = "0.15.1"
 
 [[deps.DataStructures]]
 deps = ["Compat", "InteractiveUtils", "OrderedCollections"]
