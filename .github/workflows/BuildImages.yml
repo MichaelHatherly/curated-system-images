@@ -151,6 +151,6 @@ jobs:
           allowUpdates: true
           prerelease: true
 
-      - uses: geekyeggo/delete-artifact@v4
+      - uses: geekyeggo/delete-artifact@v5
         with:
           name: ${{ matrix.image }}-${{ matrix.os }}-${{ matrix.arch }}-${{ matrix.version }}
