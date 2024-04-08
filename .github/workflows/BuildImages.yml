@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: julia-actions/setup-julia@v1
+      - uses: julia-actions/setup-julia@v2
         with:
           version: '1.8'
           arch: x64
@@ -62,7 +62,7 @@ jobs:
             folder:
               - 'sysimages/${{ matrix.image }}/**'
 
-      - uses: julia-actions/setup-julia@v1
+      - uses: julia-actions/setup-julia@v2
         if: startsWith(github.ref, 'refs/tags/') || steps.changes.outputs.folder == 'true'
         with:
           version: ${{ matrix.version }}
