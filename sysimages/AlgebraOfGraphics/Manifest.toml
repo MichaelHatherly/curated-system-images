@@ -771,10 +771,10 @@ deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[deps.Loess]]
-deps = ["Distances", "LinearAlgebra", "Statistics", "StatsAPI"]
-git-tree-sha1 = "f749e7351f120b3566e5923fefdf8e52ba5ec7f9"
+deps = ["Distances", "LinearAlgebra", "Statistics", "StatsAPI", "StatsFuns"]
+git-tree-sha1 = "b1ad83b367b915e2dc485dee3d62a6a6317d7ad4"
 uuid = "4345ca2d-374a-55d4-8d30-97f9976e7612"
-version = "0.6.4"
+version = "0.6.5"
 
 [[deps.LogExpFunctions]]
 deps = ["ChainRulesCore", "ChangesOfVariables", "DocStringExtensions", "InverseFunctions", "IrrationalConstants", "LinearAlgebra"]
@@ -1064,9 +1064,9 @@ version = "1.3.0"
 
 [[deps.QOI]]
 deps = ["ColorTypes", "FileIO", "FixedPointNumbers"]
-git-tree-sha1 = "8b3fc30bc0390abdce15f8822c889f669baed73d"
+git-tree-sha1 = "472daaa816895cb7aee81658d4e7aec901fa1106"
 uuid = "4b34888f-f399-49d4-9bb3-47ed5cae4e65"
-version = "1.0.1"
+version = "1.0.2"
 
 [[deps.QuadGK]]
 deps = ["DataStructures", "LinearAlgebra"]
@@ -1484,9 +1484,9 @@ version = "2.0.4+0"
 
 [[deps.libpng_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Zlib_jll"]
-git-tree-sha1 = "07b6a107d926093898e82b3b1db657ebe33134ec"
+git-tree-sha1 = "5cb3c5d039f880c0b3075803c8bf45cb95ae1e91"
 uuid = "b53b4c65-9356-5827-b1ea-8c7a1a84506f"
-version = "1.6.50+0"
+version = "1.6.51+0"
 
 [[deps.libsixel_jll]]
 deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "libpng_jll"]
